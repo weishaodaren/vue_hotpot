@@ -17,7 +17,6 @@
       </el-form>
       </div>
     </el-card>
-    {{$store.state.globalSettings}}
   </div>
 </template>
 
@@ -27,7 +26,7 @@
       return {
         formData: {   //表单中影虎输入的两个数据
           aname: 'admin',
-          apwd: ''
+          apwd: '123456'
         }
       }
     },
@@ -42,7 +41,8 @@
               //执行视图跳转
               this.$router.push('/main');
             }else{
-              this.$alert('用户名或密码有误！','登录失败',{type:'error'});
+              this.$alert('用户名或密码有误！','登录失败',{type:'error'}).then(()=>{}).catch(()=>{
+              });
             }
         }).catch((err)=>{
             console.log(err);
@@ -52,17 +52,7 @@
         this.formData.aname='';
         this.formData.apwd='';
       }
-    },
-    mounted(){
-      //当前组件挂载完成后异步请求整个网站全局配置数据
-      var url=this.$store.state.globalSettings.apiUrl
-      +'/admin/settings';
-      this.$axios.get(url).then((res)=>{
-        this.$store.commit('setGlobalSettings',res.data);
-      }).catch((err)=>{
-        console.log(err);
-      })
-    },
+    }
   }
 </script>
 
