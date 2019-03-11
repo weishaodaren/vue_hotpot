@@ -1,6 +1,6 @@
 <template>
   <div class="lmx-main-header">
-    <h3 class="lmx-title">{{$store.state.globalSettings.appName}}管理后台</h3>
+    <h3 class="lmx-title">{{$store.state.globalSettings.appName}}火锅</h3>
     <div class="lmx-right">
       当前用户:{{$store.state.adminName}}
       <el-button size="mini" @click="quit">退出</el-button>
